@@ -1,0 +1,21 @@
+class Carrinho(models.Model):
+    NOME_CARRINHO = models.CharField(max_length=30)
+    ID_PRODUTO = models.ForeignKey(Produto, on_delete=models.DO_NOTHING)
+    QUANTIDADE = models.IntegerField()
+    ID_CLIENTE = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return self.NOME_CARRINHO
+
+    ID_CARRINHO: models.ForeignKey(Carrinho, on_delete=models.DO_NOTHING)
+
+    
+
+
+
+class Pedidos(models.Model):
+    PEDIDO = models.CharField(max_length=30)
+
+
+    def __str__(self):
+        return self.PEDIDO
