@@ -30,3 +30,9 @@ class Carrinho(models.Model):
 
     def __str__(self):
         return self.NOME_CARRINHO
+
+TIPO_USUARIO = [
+    ('Cliente', 'Cliente'),
+    ('Funcionario', 'Funcionario'),
+    ('Administrador', 'Administrador')
+]

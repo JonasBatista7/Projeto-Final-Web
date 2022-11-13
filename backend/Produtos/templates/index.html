@@ -10,54 +10,79 @@
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body style="background-color: #2E2F3E;">
+    {% if user.is_staff %}
     <div>
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-            <span class="fs-4" style="color:#FFFFFF">Trend HR</span>
-          </a>
-    
-          <ul class="nav nav-pills">
-            <li class="nav-item"><a href="#" class="nav-link active">Produtos</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Carrinho</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
-          </ul>
-        </header>
-    </div>
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+          <span class="fs-4" style="color:#FFFFFF">Trend HR</span>
+        </a>
 
-    
-    <img src="/static/imagem1.jpg" alt="Loja" class="imagem-loja">
-  
-   
-    <section>
-      <header >
-        <span class="Section-Produtos-Text">Queima de Estoque</span>
-    </header>
-    
-    <div class="container produtos">
-      
-      <div class="row">
-        {% for produto in produtos %}
-      
-        
-          <div class="col-4" >
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="#" class="nav-link">Pedidos</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Produtos</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Carrinho</a></li>
+          {% if user.is_authenticated %}
+              <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+          {% else %}
+          <li class="nav-item"><a href="accounts/login/" class="nav-link">Login</a></li>
+          {% endif %}  
+        </ul>
+      </header>
+    </div>
+    {% else %}
+    <div>
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+          <span class="fs-4" style="color:#FFFFFF">Trend HR</span>
+        </a>
+
+        <ul class="nav nav-pills">
           
-            <div class="produto">
-             <img src="/static/images/download.jpeg" alt="Camiseta" class="imagem-produto">
-             <div class="info-produto">
-              <p class="nome-produto">{{produto.NOME_PRODUTO}}</p>
-              <p class="valor-produto">R$ {{produto.VALOR}}</p>
-             </div>
-              
-              <a href="#" class="btn btn-primary my-2 btn-adicionar">Adicionar ao carrinho</a>
-              
-            </div>
+          <li class="nav-item"><a href="#" class="nav-link">Produtos</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Carrinho</a></li>
+          {% if user.is_authenticated %}
+              <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+          {% else %}
+          <li class="nav-item"><a href="accounts/login/" class="nav-link">Login</a></li>
+          {% endif %}  
+        </ul>
+      </header>
+    </div>
+    {% endif %}
+
+<img src="/static/imagem1.jpg" alt="Loja" class="imagem-loja">
+
+
+<section>
+  <header >
+    <span class="Section-Produtos-Text">Queima de Estoque</span>
+</header>
+
+<div class="container produtos">
+  
+  <div class="row">
+    {% for produto in produtos %}
+        <div class="col-4" >
+        
+          <div class="produto">
+          <img src="/static/images/download.jpeg" alt="Camiseta" class="imagem-produto">
+          <div class="info-produto">
+            <p class="nome-produto">{{produto.NOME_PRODUTO}}</p>
+            <p class="valor-produto">R$ {{produto.VALOR}}</p>
           </div>
+            
+            <a href="#" class="btn btn-primary my-2 btn-adicionar">Adicionar ao carrinho</a>
+            
+          </div>
+        </div>
         {% endfor %}
+      
       </div>
     </div>
   </section>
-
+      
 </html>
 
 </body>

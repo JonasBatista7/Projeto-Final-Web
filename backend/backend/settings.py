@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Produtos',
     'rest_framework.authtoken',
     'corsheaders',
+    'accounts',
 
 ]
 
@@ -135,3 +136,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
+
+LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "index"
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = BASE_DIR / "sent_emails"

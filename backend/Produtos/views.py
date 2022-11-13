@@ -15,7 +15,7 @@ def index(request):
     produtos = Produto.objects.all()
     context = {
         'produtos': produtos
-    } 
+    }
     return render(request, 'index.html', context)
 
 def produto(request, pk):

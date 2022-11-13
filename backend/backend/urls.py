@@ -19,5 +19,7 @@ from Produtos.views import  Produto, Carrinho
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("accounts/", include("accounts.urls")),
     path('', include('Produtos.urls')), 
+    path("accounts/", include("django.contrib.auth.urls")),
 ]

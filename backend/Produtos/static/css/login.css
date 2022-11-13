@@ -1,0 +1,54 @@
+
+
+
+* {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+}
+
+
+.input-username {
+  margin: 10px;
+}
+
+.input-password {
+  margin: 10px;
+}
+
+
+
+.btn-entrar{
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+
+  color: #FFFFFF;
+  background: #4F7EDB;
+  border-radius: 10px;
+  padding: 10px 70px;
+  border: none;
+}
+.div-cadastrar{
+  margin-top: 10px;
+}
+.btn-cadastrar {
+  
+  text-decoration: none;
+}
+
+.btn-entrar:hover{
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+label,input{
+  display:flex;
+  flex-direction:column;
+}
+
+label {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  line-height: 39px;
+}
