@@ -1,5 +1,6 @@
 import React from 'react'
 import Produto from './Produto'
+import Button from './button'
 
 
 export default class  Produtos extends React.Component{
@@ -21,11 +22,20 @@ export default class  Produtos extends React.Component{
     {
         const listApi = this.state.lists;
         return (
-            <div>
-                <h2>Produtos</h2>
-                 {listApi.map(list => <Produto key={list.id} NOME_PRODUTO={list.NOME_PRODUTO} CREATED_BY={list.CREATED_BY} VALOR={list.VALOR}/>)}
 
-            </div>
+            <div class="album py-5 bg-light">
+                    <div class="container">
+                        <div class="col-md-3">
+                        <div class="d-flex justify-content-between">
+                                <h2>Produtos</h2>
+                                {listApi.map(list => <Produto key={list.id} NOME_PRODUTO={list.NOME_PRODUTO} CREATED_BY={list.CREATED_BY} VALOR={list.VALOR}/>)}
+                                
+                        </div>
+                        </div>
+                    </div>
+                    <Button nome={"Teste"}/>
+            </div>  
+            
         )
     }
 }

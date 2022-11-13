@@ -7,12 +7,22 @@ from rest_framework import permissions, authentication
 from .serializers import ProdutoSerializer, CarrinhoSerializer
 from .models import Produto, Carrinho
 
-class ProdutoViewSet(viewsets.ModelViewSet):
-    queryset = Produto.objects.all()
-    serializer_class = ProdutoSerializer
 
-class CarrinhoViewSet(viewsets.ModelViewSet):
-    queryset = Carrinho.objects.all()
-    serializer_class = CarrinhoSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication] 
+
+def index(request):
+    produtos = Produto.objects.all()
+    context = {
+        'produtos': produtos
+    } 
+    return render(request, 'index.html', context)
+
+def produto(request, pk):
+    prod = Produto.objects.get(id=pk)
+    context = {
+        'produto': prod
+    }
+    return render(request, 'produtos.html', context)
+
+
+def Carrinhos(request):
+    return render(request, 'carrinho.html')
