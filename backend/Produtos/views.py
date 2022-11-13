@@ -9,7 +9,9 @@ from .models import Produto, Carrinho
 
 
 
+
 def index(request):
+
     produtos = Produto.objects.all()
     context = {
         'produtos': produtos

@@ -7,8 +7,9 @@
     <title>Document</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
-<body>
+<body style="background-color: #2E2F3E;">
     <div style="background-color:#2E2F3E">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -23,26 +24,92 @@
           </ul>
         </header>
     </div>
-    <table>
-        
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Preço</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for produto in produtos %}
-            <tr>
-                <td>{{produto.NOME_PRODUTO}}</td>
-                <td>{{produto.VALOR}}</td>
-                <td><a href="{% url 'produto' produto.id%}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
-                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
-                  </svg></a></td>
-            </tr>
-        </tbody>
 
+    
+    <img src="/static/imagem1.jpg" alt="Loja" class="imagem-loja">
+    
+
+    
+    
+    <div class="row">
+      {% for produto in produtos %}
+    
+      
+        <div class="col-4" >
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        
+            <div class="card-body">
+              <p class="card-text">{{produto.NOME_PRODUTO}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="#" class="btn btn-primary my-2">Adicionar ao carrinho</a>
+                </div>
+                <small class="text-muted">{{produto.VALOR}} 
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    
+    <div class="row">
+      {% for produto in produtos %}
+    
+      
+        <div class="col-4" >
+        
+            <div class="card-body">
+              <p class="card-text">{{produto.NOME_PRODUTO}}</p>
+                <div class="btn-group">
+                  <a href="#" class="btn btn-primary my-2">Adicionar ao carrinho</a>
+                </div>
+                <small class="text-muted">{{produto.VALOR}} 
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+  
+
+    <div class="container">
+      <div class="row">
+      {% for produto in produtos.paginator.page %}
+      {%  if forloop.counter|divisibleby:3 %} 
+        <div class="col-md-4">
+          {{produto.NOME_PRODUTO}}
+        </div>
+      </div>
+      {% if not forloop.last %} 
+      <div class="row">
+      {% endif %}
+      {% else %} 
+        <div class="col-md-4">
+          {{produto.NOME_PRODUTO}}
+        </div>
+      {% endif %}
+      {% endfor %}
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        {% for produto in produtos %}
+      
+        
+          <div class="col-4" >
+          
+            <div class="produto">
+             <img src="/static/images/download.jpeg" alt="Camiseta" class="imagem-produto">
+              <p class="nome-produto">{{produto.NOME_PRODUTO}} {{produto.VALOR}}</p>
+              <a href="#" class="btn btn-primary my-2 btn-adicionar">Adicionar ao carrinho</a>
+              
+            </div>
+          </div>
         {% endfor %}
-    </table>
+      </div>
+    </div>
+    
+
+</html>
+
 </body>
 </html>
