@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body style="background-color: #2E2F3E;">
-    <div style="background-color:#2E2F3E">
+    <div>
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
@@ -27,70 +27,15 @@
 
     
     <img src="/static/imagem1.jpg" alt="Loja" class="imagem-loja">
-    
-
-    
-    
-    <div class="row">
-      {% for produto in produtos %}
-    
-      
-        <div class="col-4" >
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-        
-            <div class="card-body">
-              <p class="card-text">{{produto.NOME_PRODUTO}}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a href="#" class="btn btn-primary my-2">Adicionar ao carrinho</a>
-                </div>
-                <small class="text-muted">{{produto.VALOR}} 
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-    
-    <div class="row">
-      {% for produto in produtos %}
-    
-      
-        <div class="col-4" >
-        
-            <div class="card-body">
-              <p class="card-text">{{produto.NOME_PRODUTO}}</p>
-                <div class="btn-group">
-                  <a href="#" class="btn btn-primary my-2">Adicionar ao carrinho</a>
-                </div>
-                <small class="text-muted">{{produto.VALOR}} 
-            </div>
-        </div>
-      {% endfor %}
-    </div>
   
-
-    <div class="container">
-      <div class="row">
-      {% for produto in produtos.paginator.page %}
-      {%  if forloop.counter|divisibleby:3 %} 
-        <div class="col-md-4">
-          {{produto.NOME_PRODUTO}}
-        </div>
-      </div>
-      {% if not forloop.last %} 
-      <div class="row">
-      {% endif %}
-      {% else %} 
-        <div class="col-md-4">
-          {{produto.NOME_PRODUTO}}
-        </div>
-      {% endif %}
-      {% endfor %}
-      </div>
-    </div>
-    <div class="container">
+   
+    <section>
+      <header >
+        <span class="Section-Produtos-Text">Queima de Estoque</span>
+    </header>
+    
+    <div class="container produtos">
+      
       <div class="row">
         {% for produto in produtos %}
       
@@ -99,7 +44,11 @@
           
             <div class="produto">
              <img src="/static/images/download.jpeg" alt="Camiseta" class="imagem-produto">
-              <p class="nome-produto">{{produto.NOME_PRODUTO}} {{produto.VALOR}}</p>
+             <div class="info-produto">
+              <p class="nome-produto">{{produto.NOME_PRODUTO}}</p>
+              <p class="valor-produto">R$ {{produto.VALOR}}</p>
+             </div>
+              
               <a href="#" class="btn btn-primary my-2 btn-adicionar">Adicionar ao carrinho</a>
               
             </div>
@@ -107,7 +56,7 @@
         {% endfor %}
       </div>
     </div>
-    
+  </section>
 
 </html>
 
