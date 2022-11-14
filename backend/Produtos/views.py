@@ -9,6 +9,7 @@ from .models import Produto, Carrinho
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
+from decimal import Decimal
 
 
 
@@ -21,12 +22,31 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
-def produto(request, pk):
+def editarproduto(request, pk):
+  prod = Produto.objects.get(id=pk)
+  context = {
+    'prod': prod,
+  }
+  return render(request, 'produto.html', context)
+
+
+def editar(request, pk):
     prod = Produto.objects.get(id=pk)
-    context = {
-        'produto': prod
-    }
-    return render(request, 'produto.html', context)
+    nomedoproduto = request.POST['nome_produto']
+    VALOR = request.POST['valor']
+    ESTOQUE = request.POST['estoque']
+    DESCRICAO = request.POST['descricao']
+    prod.NOME_PRODUTO = nomedoproduto
+    prod.VALOR = Decimal(VALOR)
+    prod.QUANTIDADE_ESTOQUE = ESTOQUE
+    prod.DESCRICAO = DESCRICAO
+    prod.save()
+    return HttpResponseRedirect(reverse('produtos'))
+
+def apagarproduto(request, pk):
+  prod = Produto.objects.get(id=pk)
+  prod.delete()
+  return HttpResponseRedirect(reverse('produtos'))
 
 
 def adicionar(request):
@@ -39,7 +59,7 @@ def addproduto(request):
     DESCRICAO = request.POST['descricao']
     prod = Produto( NOME_PRODUTO=NM_PRODUTO, VALOR=VALOR, QUANTIDADE_ESTOQUE=ESTOQUE, DESCRICAO=DESCRICAO)
     prod.save()
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('produtos'))
 
 
 

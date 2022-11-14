@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+body {
+    background-color: #2E2F3E;
+    width: 100vw;
+}
+
+
+
+.produto {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+label {
+    display: block;
+    color: #ffffff;
+}
+
+
+
+.div-teste {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.title-item {
+    display: block;
+    color: #ffffff;
+}
+
+.value-item {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.descricao-item {
+    min-width: 300px;
+}
+
+.valor-item {
+    min-width: 300px;
+}
+
+.produto-item {
+    min-width: 300px;
+}
+
+.estoque-item {
+    min-width: 300px;
+}
+
+.div1 { grid-area: 1 / 1 / 2 / 3; }
+.div2 { grid-area: 1 / 3 / 2 / 5; }
+.div3 { grid-area: 2 / 1 / 3 / 3; }
+.div4 { grid-area: 2 / 3 / 3 / 5; }
+
+.button-pen {
+    display: flex;
+    padding: 5px 15px;
+    border-radius: 10px;
+    align-items: start;
+    justify-content: center;
+}
+
+.container-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+}
+
+.btn-salvar {
+    background-color: #4F7EDB;
+    color: #ffffff;
+    padding: 10px 30px;
+    margin: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.btn-excluir {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 30px;
+    margin: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.btn-salvar:hover {
+    background-color: #0d6efd;
+}
+
+.btn {
+    float: right;
+}
+
+.texto-aviso-user {
+    color: white;
+    text-align: center;
+}
+
+.btn-back {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+
+
+.container-aviso {
+    width: 50%;
+    border: 1px solid white;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

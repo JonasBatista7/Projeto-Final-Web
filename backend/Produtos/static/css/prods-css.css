@@ -2,8 +2,10 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
 }
+
+
 body {
     background-color: #2E2F3E;
 }
@@ -13,12 +15,12 @@ body {
 
 
 .produtos {
-    display: flex;
+  display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   justify-content: normal;
   align-items: normal;
   align-content: normal;
+  height: 200px;
 }
 
 .produto {
@@ -92,8 +94,8 @@ body {
     box-sizing: border-box;
     background-color: #4F7EDB;
     color: #ffffff;
+    margin-right: 30px;
     padding: 10px 30px;
-    margin: 10px;
     border-radius: 10px;
     text-decoration: none;
     min-width: 150px;
@@ -113,7 +115,7 @@ body {
     text-decoration: none;
 }
 
-.container {
+.container-aviso {
     width: 50%;
     border: 1px solid white;
     padding: 50px;
