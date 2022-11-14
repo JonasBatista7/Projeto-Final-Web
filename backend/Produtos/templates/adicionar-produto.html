@@ -1,0 +1,9 @@
+<h1>Adicionar membro</h1>
+<form action="addproduto/" method="post">
+{% csrf_token %}
+Nome:<br><input name="nome"><br><br>
+Valor:<br><input name="valor"><br><br>
+Estoque:<br><input name="estoque"><br><br>
+Descrição:<br><input name="descricao"><br><br>
+<input type="submit" value="Adicionar">
+</form>

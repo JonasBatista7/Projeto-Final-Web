@@ -3,9 +3,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Produto(models.Model):
-    CREATED_BY = models.ForeignKey(User , on_delete=models.DO_NOTHING)
     NOME_PRODUTO = models.CharField(max_length=30,unique=True)
-    VALOR = models.DecimalField(max_digits=4, decimal_places=2)
+    VALOR = models.DecimalField(max_digits=6, decimal_places=2)
     QUANTIDADE_ESTOQUE = models.IntegerField()
     DESCRICAO = models.CharField(max_length=100)
 

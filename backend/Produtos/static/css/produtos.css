@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+body {
+    background-color: #2E2F3E;
+}
+
+
+
+
+
+.produtos {
+    display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: normal;
+  align-items: normal;
+  align-content: normal;
+}
+
+.produto {
+    display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+.div-teste {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.title-item {
+    display: block;
+    color: #ffffff;
+}
+
+.value-item {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.descricao-item {
+    min-width: 200px;
+}
+
+.valor-item {
+    min-width: 100px;
+}
+
+.produto-item {
+    min-width: 100px;
+}
+
+.estoque-item {
+    min-width: 100px;
+}
+
+
+
+.button-pen {
+    display: flex;
+    padding: 5px 15px;
+    border-radius: 10px;
+    align-items: start;
+    justify-content: center;
+}
+
+.container-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+}
+
+.btn-adicionar {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 30px;
+    margin: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.btn-finalizar {
+    box-sizing: border-box;
+    background-color: #4F7EDB;
+    color: #ffffff;
+    padding: 10px 30px;
+    margin: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    min-width: 150px;
+    text-align: center;
+}
+
+.texto-aviso-user {
+    color: white;
+    text-align: center;
+}
+
+.btn-back {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.container {
+    width: 50%;
+    border: 1px solid white;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
