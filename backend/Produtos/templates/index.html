@@ -40,7 +40,7 @@
         <ul class="nav nav-pills">
           
           <li class="nav-item"><a href="#" class="nav-link active">Produtos</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Carrinho</a></li>
+          <li class="nav-item"><a href="Carrinho" class="nav-link">Carrinho</a></li>
           {% if user.is_authenticated %}
               <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
           {% else %}
@@ -72,7 +72,7 @@
             <p class="valor-produto">R$ {{produto.VALOR}}</p>
           </div>
             
-            <a href="#" class="btn btn-primary my-2 btn-adicionar">Adicionar ao carrinho</a>
+            <a href="addcarrinho/{{produto.id}}" class="btn btn-primary my-2 btn-adicionar">Adicionar ao carrinho</a>
             
           </div>
         </div>

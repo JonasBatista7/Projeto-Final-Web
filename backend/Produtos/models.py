@@ -7,6 +7,7 @@ class Produto(models.Model):
     VALOR = models.DecimalField(max_digits=6, decimal_places=2)
     QUANTIDADE_ESTOQUE = models.IntegerField()
     DESCRICAO = models.CharField(max_length=100)
+    IMAGEM = models.ImageField(upload_to='images/')
 
     def __str__(self):
         return self.NOME_PRODUTO
@@ -17,16 +18,14 @@ TIPO_STATUS = [
 ]
 
 class Carrinho(models.Model):
-    NOME_CARRINHO = models.CharField(max_length=30)
-    ID_PRODUTO = models.ForeignKey(Produto, on_delete=models.DO_NOTHING)
-    QUANTIDADE = models.IntegerField()
+    NOME_CARRINHO = models.CharField(max_length=30, default='Carrinho')
+    ID_PRODUTO = models.ManyToManyField(Produto, through='Produto_Quantidade')
     ID_CLIENTE = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     STATUS_CARRINHO = models.CharField(
         max_length=40,
         choices=TIPO_STATUS,
         default='Pedido Realizado',
     )
-
     def __str__(self):
         return self.NOME_CARRINHO
 
@@ -35,3 +34,13 @@ TIPO_USUARIO = [
     ('Funcionario', 'Funcionario'),
     ('Administrador', 'Administrador')
 ]
+
+class Produto_Quantidade(models.Model):
+    ID_PRODUTO = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    ID_CARRINHO = models.ForeignKey(Carrinho, on_delete=models.CASCADE)
+    QUANTIDADE = models.IntegerField()
+    SUB_TOTAL = models.DecimalField(max_digits=6, decimal_places=2)
+
+    def __str__(self):
+        return "{}_{}".format(self.ID_PRODUTO.__str__(), self.ID_CARRINHO.__str__())
+

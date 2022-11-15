@@ -1,13 +1,3 @@
-<h1>Adicionar membro</h1>
-<form action="addproduto/" method="post">
-{% csrf_token %}
-Nome:<br><input name="nome"><br><br>
-Valor:<br><input name="valor"><br><br>
-Estoque:<br><input name="estoque"><br><br>
-Descrição:<br><input name="descricao"><br><br>
-<input type="submit" value="Adicionar">
-</form>
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -41,7 +31,7 @@ Descrição:<br><input name="descricao"><br><br>
     </div>
             
         
-                <form action="editar/{{ prod.id }}" method="post">
+                <form action="addproduto/" method="post">
                     {% csrf_token %}
                     <div class="produto container">
                     <div class="div1">
@@ -50,7 +40,7 @@ Descrição:<br><input name="descricao"><br><br>
                     </div>
                     <div class="div2">
                         <label for="valor">Valor:</label>
-                        <input class="value-item valor-item" type="number" name="valor" id="valor" value="{{ prod.VALOR }}">
+                        <input class="value-item valor-item" name="valor" id="valor" value="{{ prod.VALOR }}">
                     </div>
                     <div class="div3">
                         <label for="estoque">Estoque:</label>
