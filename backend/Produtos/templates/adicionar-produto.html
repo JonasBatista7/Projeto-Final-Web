@@ -31,35 +31,16 @@
     </div>
             
         
-                <form action="addproduto/" method="post">
-                    {% csrf_token %}
-                    <div class="produto container">
-                    <div class="div1">
-                        <label for="nome_produto">Produto:</label>
-                        <input class="value-item produto-item" name="nome_produto" id="nome_produto" value="{{ prod.NOME_PRODUTO }}">
-                    </div>
-                    <div class="div2">
-                        <label for="valor">Valor:</label>
-                        <input class="value-item valor-item" name="valor" id="valor" value="{{ prod.VALOR }}">
-                    </div>
-                    <div class="div3">
-                        <label for="estoque">Estoque:</label>
-                        <input class="value-item estoque-item" type="number" name="estoque" id="estoque" value="{{ prod.QUANTIDADE_ESTOQUE }}">
-                    </div>
-                    <div class="div4">
-                        <label for="descricao">Descrição:</label>
-                        <input class="value-item descricao-item" name="descricao" id="descricao" value="{{ prod.DESCRICAO }}">
-                    </div>
-                </div>
-                <div class="btn">
-                    <button class="btn-salvar" type="submit">Salvar</button>
-                    <a href="/apagarproduto/{{ prod.id }}" class="btn-excluir"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                      </svg></a>
-                </div>
-                    
-                </form>
+        <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id="div-teste" class="produto container">
+            {{ form.as_div }}
+        </div>
+         
+        <div class="btn">
+            <button class="btn-salvar" type="submit">Salvar</button>
+        </div>
+        </form>  
             
     {% else %}
         <div class="container container-aviso">
@@ -69,4 +50,24 @@
                 
     {% endif %}
 </body>
+
+    <script>
+        const teste = document.getElementById("div-teste").children;
+        teste[0].classList.add("div1")
+        teste[1].classList.add("div2")
+        teste[2].classList.add("div3")
+        teste[3].classList.add("div4")
+        teste[4].classList.add("div5")
+        document.onload = document.getElementById("id_NOME_PRODUTO").classList.add("value-item");
+        document.onload = document.getElementById("id_VALOR").classList.add("value-item");
+        document.onload = document.getElementById("id_QUANTIDADE_ESTOQUE").classList.add("value-item");
+        document.onload = document.getElementById("id_DESCRICAO").classList.add("value-item");
+        document.onload = document.getElementById("id_IMAGEM").classList.add("value-item");
+        
+        document.onload = document.getElementById("id_NOME_PRODUTO").classList.add("produto-item");
+        document.onload = document.getElementById("id_VALOR").classList.add("valor-item");
+        document.onload = document.getElementById("id_QUANTIDADE_ESTOQUE").classList.add("estoque-item");
+        document.onload = document.getElementById("id_DESCRICAO").classList.add("descricao-item");
+        document.onload = document.getElementById("id_IMAGEM").classList.add("imagem-item");
+    </script>
 </html>

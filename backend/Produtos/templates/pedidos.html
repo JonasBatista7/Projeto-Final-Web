@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/static/css/prods-css.css">
 </head>
 <body>
+    {% if user.is_staff %}
     <div>
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -17,8 +18,8 @@
         </a>
 
         <ul class="nav nav-pills">
-          <li class="nav-item"><a href="/" class="nav-link ">Produtos</a></li>
-          <li class="nav-item"><a href="#" class="nav-link active">Carrinho</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Pedidos</a></li>
+          <li class="nav-item"><a href="/produtos" class="nav-link active">Produtos</a></li>
           {% if user.is_authenticated %}
               <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
           {% else %}
@@ -31,31 +32,27 @@
 
     <div class="row">
             
-        {% for item in itens %}
+        {% for car in cars %}
         <div>
             <div class="produtos">
                 <div class="produto">
                     
                     <div class="div-teste">
                         <p class="title-item">Produto</p>
-                        <p class="value-item produto-item">{{item.ID_PRODUTO}}</p>
+                        <p class="value-item produto-item">{{car.NOME_CARRINHO}}</p>
                     </div>
                     
                     <div class="div-teste">
                         <p class="title-item">Valor</p>
-                        <p class="value-item valor-item">{{item.ID_PRODUTO.VALOR}}</p>
+                        <p class="value-item valor-item">{{car.ID_CLIENTE}}</p>
                     </div>
                     
                     <div class="div-teste">
-                        <p class="title-item">Quantidade</p>
-                        <p class="value-item estoque-item">{{item.QUANTIDADE}}</p>
+                        <p class="title-item">Descrição</p>
+                        <p class="value-item descricao-item">{{car.STATUS_CARRINHO}}</p>
                     </div>
                     <div class="div-teste">
-                        <p class="title-item">Sub-Total</p>
-                        <p class="value-item estoque-item">{{item.SUB_TOTAL}}</p>
-                    </div>
-                    <div class="div-teste">
-                        <a href="editarcarrinho/{{item.id}}" class="button-pen"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                        <a href="pedidos/{{ car.id }}" class="button-pen"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
                             <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
                           </svg></a>
                     </div>
@@ -66,8 +63,15 @@
         {% endfor %}
     </div>
     <div class="container-buttons">
-        <a class="btn-adicionar" href="/">Adicionar Produto</a>
-        <a class="btn-finalizar" href="finalizar_carrinho">Finalizar</a>
+        <a class="btn-adicionar" href="adicionar/">Adicionar Produto</a>
+        <a class="btn-finalizar" href="/">Finalizar</a>
     </div>
+    {% else %}
+        <div class="container container-aviso">
+            <p class="texto-aviso-user">Usuario não possui permissões para visualizar a pagina!</p>
+            <a class="btn-back" href="/">Voltar</a>
+        </div>
+        
+    {% endif %}
 </body>
 </html>

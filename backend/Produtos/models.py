@@ -7,7 +7,7 @@ class Produto(models.Model):
     VALOR = models.DecimalField(max_digits=6, decimal_places=2)
     QUANTIDADE_ESTOQUE = models.IntegerField()
     DESCRICAO = models.CharField(max_length=100)
-    IMAGEM = models.ImageField(upload_to='images/')
+    IMAGEM = models.ImageField(upload_to='images/', null = True)
 
     def __str__(self):
         return self.NOME_PRODUTO

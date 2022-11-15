@@ -18,12 +18,13 @@ from django.urls import include, path
 from Produtos.views import  Produto, Carrinho
 from django.conf import settings
 from django.conf.urls.static import static
-if settings.DEBUG:
-        urlpatterns += static(settings.MEDIA_URL,
-                              document_root=settings.MEDIA_ROOT)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("accounts/", include("accounts.urls")),
     path('', include('Produtos.urls')), 
     path("accounts/", include("django.contrib.auth.urls")),
 ]
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)

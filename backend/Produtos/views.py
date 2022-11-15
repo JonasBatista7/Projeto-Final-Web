@@ -10,6 +10,7 @@ from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from decimal import Decimal
+from .forms import *
 
 
 
@@ -50,18 +51,22 @@ def apagarproduto(request, pk):
 
 
 def adicionar(request):
-  return render(request, 'adicionar-produto.html')
+    """Process images uploaded by users"""
+    if request.method == 'POST':
+        form = ProdutoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            # Get the current instance object to display in the template
+            img_obj = form.instance
+            return HttpResponseRedirect(reverse('produtos'))
+    else:
+        form = ProdutoForm()
+    return render(request, 'adicionar-produto.html', {'form': form})
 
-def addproduto(request):
-    NM_PRODUTO = request.POST['nome_produto']
-    VALOR = Decimal(request.POST['valor'])
-    ESTOQUE = request.POST['estoque']
-    DESCRICAO = request.POST['descricao']
-    prod = Produto( NOME_PRODUTO=NM_PRODUTO, VALOR=VALOR, QUANTIDADE_ESTOQUE=ESTOQUE, DESCRICAO=DESCRICAO)
-    prod.save()
-    return HttpResponseRedirect(reverse('produtos'))
 
 
+def success(request): 
+    return HttpResponse('successfully uploaded') 
 
 def produtos(request):
     prods = Produto.objects.all()
@@ -120,3 +125,20 @@ def apagar_item_carrinho(request, pk):
 def finalizar_carrinho(request):
     Carrinho.objects.filter(ID_CLIENTE = request.user).update(STATUS_CARRINHO = 'Pedido Confirmado')
     return HttpResponseRedirect(reverse('Carrinho')) 
+
+
+
+def pedidos(request):
+    Cars = Carrinho.objects.all()
+    context = {
+        'cars': Cars
+    }
+    return render(request, 'pedidos.html', context)
+
+def pedido_detalhes(request, pk):
+  Cars = Carrinho.objects.filter(id=pk).get()
+  Itens  = Produto_Quantidade.objects.filter(ID_CARRINHO = Cars)
+  context = {
+    'itens': Itens
+  }
+  return render(request, 'pedido-detalhado.html', context)
