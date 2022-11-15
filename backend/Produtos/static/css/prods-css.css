@@ -31,7 +31,7 @@ body {
   align-items: center;
   align-content: center;
 }
-.div-teste {
+.div-item {
     padding: 10px;
     display: flex;
     flex-direction: column;

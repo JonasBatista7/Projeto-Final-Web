@@ -19,7 +19,7 @@
         </a>
 
         <ul class="nav nav-pills">
-          <li class="nav-item"><a href="#" class="nav-link">Pedidos</a></li>
+          <li class="nav-item"><a href="pedidos" class="nav-link">Pedidos</a></li>
           <li class="nav-item"><a href="/produtos" class="nav-link">Produtos</a></li>
           {% if user.is_authenticated %}
               <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>

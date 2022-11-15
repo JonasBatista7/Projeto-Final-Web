@@ -51,7 +51,6 @@ def apagarproduto(request, pk):
 
 
 def adicionar(request):
-    """Process images uploaded by users"""
     if request.method == 'POST':
         form = ProdutoForm(request.POST, request.FILES)
         if form.is_valid():
@@ -76,6 +75,7 @@ def produtos(request):
     return render(request, 'produtos.html', context)
 
 def addcarrinho(request, pk):
+  if ((request.user).is_authenticated):
     if (Carrinho.objects.filter(ID_CLIENTE=request.user, STATUS_CARRINHO='Pedido Realizado').last()):
         car = Carrinho.objects.get(ID_CLIENTE = request.user, STATUS_CARRINHO = 'Pedido Realizado')
         prod = Produto.objects.get(id=pk)   
@@ -87,16 +87,21 @@ def addcarrinho(request, pk):
         SUB_TOTAL = Produto.objects.filter(id=pk).values_list('VALOR')
         Produto_Quantidade.objects.create(ID_PRODUTO = prod, ID_CARRINHO = car, QUANTIDADE = 1, SUB_TOTAL=SUB_TOTAL)
     return HttpResponseRedirect(reverse('Carrinho'))
+  else:
+    return render(request, 'erro-page.html')
 
 
 
 def carrinho(request):
+  if ((request.user).is_authenticated):
     Cars = Carrinho.objects.filter(ID_CLIENTE = request.user, STATUS_CARRINHO = 'Pedido Realizado').last()
     Itens = Produto_Quantidade.objects.filter(ID_CARRINHO = Cars)
     context = {
         'itens': Itens
     }
     return render(request, 'carrinho.html', context)
+  else:
+    return render(request, 'erro-page.html')
 
 
 def editarcarrinho(request, pk):
