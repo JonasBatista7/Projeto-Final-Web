@@ -105,25 +105,25 @@ def carrinho(request):
 
 
 def editarcarrinho(request, pk):
-  car = Carrinho.objects.get(id=pk)
+  Item  = Produto_Quantidade.objects.get(id=pk)
   context = {
-    'car': car,
+    'item': Item,
   }
   return render(request, 'editar-item-carrinho.html', context)
 
 
 def editar_item_carrinho(request, pk):
-    car = Carrinho.objects.get(id=pk)
+    Item  = Produto_Quantidade.objects.get(id=pk)
     QUANTIDADE = request.POST['quantidade']
-    SUB_TOTAL = int(QUANTIDADE) * (car.ID_PRODUTO.VALOR)
-    car.QUANTIDADE = QUANTIDADE
-    car.SUB_TOTAL = SUB_TOTAL
-    car.save()
+    SUB_TOTAL = int(QUANTIDADE) * (Item.ID_PRODUTO.VALOR)
+    Item.QUANTIDADE = QUANTIDADE
+    Item.SUB_TOTAL = SUB_TOTAL
+    Item.save()
     return HttpResponseRedirect(reverse('Carrinho'))
 
 def apagar_item_carrinho(request, pk):
-  car = Carrinho.objects.get(id=pk)
-  car.delete()
+  Item = Produto_Quantidade.objects.get(id=pk)
+  Item.delete()
   return HttpResponseRedirect(reverse('Carrinho'))
 
 
